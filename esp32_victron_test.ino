@@ -12,6 +12,7 @@ AsyncWebSocket ws("/ws");
 
 DynamicJsonDocument victronDefs(32768);
 
+#define LOGIC_LEVEL_CONVERTER_ENABLE_PIN 13
 #define MAX_LINE 200
 char readLine[MAX_LINE];
 int pos = 0;
@@ -603,6 +604,11 @@ void setup() {
   Serial.begin(115200);
   Serial2.begin(19200);
   Serial2.println("ESP32 Victron test");
+
+  // Configure GPIO13 to output pin
+  pinMode(LOGIC_LEVEL_CONVERTER_ENABLE_PIN, OUTPUT);
+  // Set GPIO13 to high to enable TXB0108/TXS0108E
+  digitalWrite(LOGIC_LEVEL_CONVERTER_ENABLE_PIN, HIGH);
 
   vicInit();
 

@@ -16,7 +16,7 @@ Contains an Arduino project for Espressif ESP32 that will run a web server with 
 
 ### 🛠 Hardware
 
-You need an ESP32 development board. I used a [NodeMCU-32s](https://www.amazon.com/dp/B07PP1R8YK/ref=twister_B0816C3VDG?_encoding=UTF8&psc=1). Also a couple of generic NPN transistors to shift the level of the 5V RS-232 signaling from the Victron unit to the 3.3V needed by the ESP32. A level-shift board could be used instead of the transistors.
+You need an ESP32 development board. I used a [NodeMCU-32s](https://www.amazon.com/dp/B07PP1R8YK/ref=twister_B0816C3VDG?_encoding=UTF8&psc=1). Also a couple of generic NPN transistors to shift the level of the 5V RS-232 signaling from the Victron unit to the 3.3V needed by the ESP32. A level-shift board (like TXB0108 or TXS0108E) could be used instead of the transistors.
 
 ### 📀 Software
 
@@ -31,6 +31,9 @@ Once you have this project downloaded there are still a couple of things to do.
 ### 👫 Hookups
 
 Hook up the charge controller's VE.Direct port to the ESP32's serial port #2. Those are pins GPIO 16 & 17. Since we only want to listen, it is just GPIO 16 that needs to be connected. Connect GND and VE.Direct-TX (pins 1 & 2, respectively, see pdf) from the controller's VE.Direct to GND and your level shifter. From the level shifter, connect to GPIO 16.
+
+If you are using TXB0108/TXS0108E based logic converter board, remember to enable it.
+![connection](connection.png)
 
 ### 📡 WiFi credentials
 
